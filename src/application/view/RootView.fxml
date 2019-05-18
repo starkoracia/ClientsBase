@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0"
+            prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="application.controllers.RootViewController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="%root.view_file">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="%root.view_close"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%root.view_edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="%root.view_delete"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%root.view_help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="%root.view_about"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <TabPane fx:id="mainTabPane" prefHeight="472.0" prefWidth="700.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE"
+                 BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab fx:id="clientsTab" text="%root.view_clients"/>
+                <Tab fx:id="storeTab" text="%root.view_store"/>
+                <Tab fx:id="stockTab" text="%root.view_storage"/>
+                <Tab fx:id="reportsTab" disable="true" text="%root.view_reports"/>
+                <Tab fx:id="paymentsTab" disable="true" text="%root.view_payments"/>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
