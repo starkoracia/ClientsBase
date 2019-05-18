@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -11,23 +12,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="application.controllers.ClientInfoViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ClientInfoViewController">
     <children>
         <AnchorPane maxHeight="50.0" prefHeight="50.0" style="-fx-background-color: #d0d0d0;">
             <children>
-                <Label fx:id="clientNameHeadLabel" layoutX="14.0" layoutY="10.0" prefHeight="50.0" prefWidth="500.0"
-                       text="%client.info.view_new.client" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Label fx:id="clientNameHeadLabel" layoutX="14.0" layoutY="10.0" prefHeight="50.0" prefWidth="500.0" text="%client.info.view_new.client" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <font>
-                        <Font name="Arial Black" size="24.0"/>
+                        <Font name="Arial Black" size="24.0" />
                     </font>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                     <padding>
-                        <Insets left="10.0"/>
+                        <Insets left="10.0" />
                     </padding>
                 </Label>
             </children>
@@ -40,45 +37,45 @@
                             <children>
                                 <Label prefHeight="43.0" prefWidth="242.0" text="%client.info.view_general.information">
                                     <font>
-                                        <Font name="System Bold Italic" size="20.0"/>
+                                        <Font name="System Bold Italic" size="20.0" />
                                     </font>
                                     <padding>
-                                        <Insets left="15.0"/>
+                                        <Insets left="15.0" />
                                     </padding>
                                     <VBox.margin>
-                                        <Insets left="5.0" top="5.0"/>
+                                        <Insets left="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Label>
                                 <Label prefHeight="11.0" prefWidth="94.0" text="%client.info.view_client.name">
                                     <VBox.margin>
-                                        <Insets left="15.0" right="10.0" top="10.0"/>
+                                        <Insets left="15.0" right="10.0" top="10.0" />
                                     </VBox.margin>
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                     <padding>
-                                        <Insets bottom="-5.0" top="-5.0"/>
+                                        <Insets bottom="-5.0" top="-5.0" />
                                     </padding>
                                 </Label>
                                 <TextField fx:id="nameTextField">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                     </VBox.margin>
                                 </TextField>
                                 <Label prefHeight="11.0" prefWidth="94.0" text="%client.info.view_mobile">
                                     <font>
-                                        <Font size="16.0"/>
+                                        <Font size="16.0" />
                                     </font>
                                     <padding>
-                                        <Insets bottom="-5.0" top="-5.0"/>
+                                        <Insets bottom="-5.0" top="-5.0" />
                                     </padding>
                                     <VBox.margin>
-                                        <Insets left="15.0" right="10.0" top="20.0"/>
+                                        <Insets left="15.0" right="10.0" top="20.0" />
                                     </VBox.margin>
                                 </Label>
                                 <TextField fx:id="mobileTextField" maxWidth="250.0" prefHeight="30.0" prefWidth="377.0">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                     </VBox.margin>
                                 </TextField>
                             </children>
@@ -87,24 +84,24 @@
                 </Tab>
                 <Tab text="Заказы">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
             </tabs>
         </TabPane>
         <AnchorPane prefHeight="40.0">
             <children>
-                <Button fx:id="deleteButton" layoutX="314.0" layoutY="-1.0" mnemonicParsing="false"
-                        onAction="#deleteButtonOnAction" text="X" AnchorPane.bottomAnchor="15.0"
-                        AnchorPane.rightAnchor="15.0">
+                <Button fx:id="deleteButton" layoutX="314.0" layoutY="-1.0" maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER_TIMES" size="20" />
+               </graphic>
                 </Button>
-                <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="15.0"
-                        prefWidth="88.0" text="%client.info.view_save" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0">
+                <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="15.0" prefWidth="88.0" text="%client.info.view_save" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0">
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
             </children>

@@ -1,12 +1,16 @@
 package application.controllers;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.interfaces.ClientManager;
 import application.interfaces.impl.CollectionClientManager;
 import application.model.Client;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,17 +19,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.CustomTextField;
+import org.controlsfx.control.textfield.TextFields;
 import org.jetbrains.annotations.NonNls;
 
 public class ClientsViewController implements Initializable {
 
-    public Button newClientButton;
+
+    public FontAwesomeIconView searchIcon;
     private ClientManager clientManager;
     @NonNls
     private final String clientInfoViewLocation = "../view/ClientInfoView.fxml";
@@ -35,26 +43,23 @@ public class ClientsViewController implements Initializable {
     private VBox clientInfoView;
 
     @FXML
+    public Button newClientButton;
+    @FXML
+    public CustomTextField searchTextField;
+    @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     private TableView<Client> clientsTable;
-
     @FXML
     private TableColumn<Client, String> nameTableColumn;
-
     @FXML
     private TableColumn<Client, String> emailTableColumn;
-
     @FXML
     private TableColumn<Client, String> mobileNumberTableColumn;
-
     @FXML
     private TableColumn<Client, String> recommendationTableColumn;
-
     @FXML
     private TableColumn<Client, String> annotationTableColumn;
 
@@ -69,6 +74,8 @@ public class ClientsViewController implements Initializable {
         this.resources = resources;
         initCellDataValues();
         clientsTable.setItems(clientManager.getClientsList());
+
+        setupClearButtonToSearchField(searchTextField);
 
         loaderAndControllerInit();
     }
@@ -127,9 +134,24 @@ public class ClientsViewController implements Initializable {
     }
 
     public void onMouseClickedTable(MouseEvent mouseEvent) {
-        if(mouseEvent.getClickCount() == 2) {
+        if (mouseEvent.getClickCount() == 2) {
             goToClientInfoView(false);
         }
     }
 
+    private void setupClearButtonToSearchField(CustomTextField customTextField) {
+        try {
+            Method m = TextFields.class.getDeclaredMethod("setupClearButtonField", TextField.class, ObjectProperty.class);
+            m.setAccessible(true);
+            m.invoke(null, customTextField, customTextField.rightProperty());
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onPressedKeySearchField(KeyEvent keyEvent) {
+    }
+
+    public void doSearch(MouseEvent mouseEvent) {
+    }
 }
