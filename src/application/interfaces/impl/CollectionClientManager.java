@@ -5,8 +5,6 @@ import application.model.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-
 public class CollectionClientManager implements ClientManager {
 
     private ObservableList<Client> clientsList;
@@ -18,16 +16,17 @@ public class CollectionClientManager implements ClientManager {
 
     public CollectionClientManager() {
         this.clientsList = FXCollections.observableArrayList();
+        this.backupClientsList = FXCollections.observableArrayList();
     }
 
     @Override
     public void fillData() {
         fillTestData();
-        initBackupClientList();
+        makeBackupClientList();
     }
 
-    private void initBackupClientList() {
-        backupClientsList = FXCollections.observableArrayList();
+    private void makeBackupClientList() {
+        backupClientsList.clear();
         backupClientsList.addAll(clientsList);
     }
 
@@ -42,16 +41,18 @@ public class CollectionClientManager implements ClientManager {
     @Override
     public void add(Client client) {
         clientsList.add(client);
+        backupClientsList.add(client);
     }
 
     @Override
-    public void update(Client client) {
+    public void update() {
 
     }
 
     @Override
     public void delete(Client client) {
         clientsList.remove(client);
+        backupClientsList.remove(client);
     }
 
     @Override

@@ -75,8 +75,12 @@ public class ClientsViewController implements Initializable {
         initCellDataValues();
         initClientInfoViewLoader();
         setSearchField();
+        setTableItems();
 
-        clientsTable.setItems(clientManager.getClientsList());
+    }
+
+    private void setTableItems() {
+        clientsTable.setItems(clientManager.getBackupClientsList());
     }
 
     private void setSearchField() {
@@ -168,11 +172,11 @@ public class ClientsViewController implements Initializable {
     }
 
     private void doSearch() {
-        clientManager.getClientsList().clear();
-        for (Client client : clientManager.getBackupClientsList()) {
+        clientManager.getBackupClientsList().clear();
+        for (Client client : clientManager.getClientsList()) {
             if (client.getClientName().toLowerCase().contains(searchTextField.getText().toLowerCase())
                     || client.getClientMobileNumber().toLowerCase().contains(searchTextField.getText().toLowerCase())) {
-                clientManager.getClientsList().add(client);
+                clientManager.getBackupClientsList().add(client);
             }
         }
     }

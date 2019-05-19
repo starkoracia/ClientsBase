@@ -13,7 +13,7 @@ public interface ClientManager {
 
     void add(Client client);
 
-    void update(Client client);
+    void update();
 
     void delete(Client client);
 
