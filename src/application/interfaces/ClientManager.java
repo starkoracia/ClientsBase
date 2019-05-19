@@ -7,6 +7,8 @@ public interface ClientManager {
 
     ObservableList<Client> getClientsList();
 
+    ObservableList<Client> getBackupClientsList();
+
     void fillData();
 
     void add(Client client);
@@ -14,4 +16,6 @@ public interface ClientManager {
     void update(Client client);
 
     void delete(Client client);
+
+
 }

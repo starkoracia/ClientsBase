@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -32,16 +33,16 @@ import org.jetbrains.annotations.NonNls;
 
 public class ClientsViewController implements Initializable {
 
-
-    public FontAwesomeIconView searchIcon;
-    private ClientManager clientManager;
     @NonNls
     private final String clientInfoViewLocation = "../view/ClientInfoView.fxml";
     private FXMLLoader loader;
     private ClientInfoViewController controller;
     private Stage clientInfoStage;
     private VBox clientInfoView;
+    private ClientManager clientManager;
 
+    @FXML
+    public FontAwesomeIconView searchIcon;
     @FXML
     public Button newClientButton;
     @FXML
@@ -68,19 +69,26 @@ public class ClientsViewController implements Initializable {
         clientManager.fillData();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.resources = resources;
         initCellDataValues();
+        initClientInfoViewLoader();
+        setSearchField();
+
         clientsTable.setItems(clientManager.getClientsList());
-
-        setupClearButtonToSearchField(searchTextField);
-
-        loaderAndControllerInit();
     }
 
-    private void loaderAndControllerInit() {
+    private void setSearchField() {
+        setChangeTextListenerToSearchField();
+        setClearedButtonToSearchField(searchTextField);
+    }
+
+    private void setChangeTextListenerToSearchField() {
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> doSearch());
+    }
+
+    private void initClientInfoViewLoader() {
         try {
             loader = new FXMLLoader(getClass().getResource(clientInfoViewLocation));
             loader.setResources(resources);
@@ -139,7 +147,7 @@ public class ClientsViewController implements Initializable {
         }
     }
 
-    private void setupClearButtonToSearchField(CustomTextField customTextField) {
+    private void setClearedButtonToSearchField(CustomTextField customTextField) {
         try {
             Method m = TextFields.class.getDeclaredMethod("setupClearButtonField", TextField.class, ObjectProperty.class);
             m.setAccessible(true);
@@ -150,8 +158,23 @@ public class ClientsViewController implements Initializable {
     }
 
     public void onPressedKeySearchField(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            doSearch();
+        }
     }
 
-    public void doSearch(MouseEvent mouseEvent) {
+    public void mouseClickedSearch(MouseEvent mouseEvent) {
+        doSearch();
     }
+
+    private void doSearch() {
+        clientManager.getClientsList().clear();
+        for (Client client : clientManager.getBackupClientsList()) {
+            if (client.getClientName().toLowerCase().contains(searchTextField.getText().toLowerCase())
+                    || client.getClientMobileNumber().toLowerCase().contains(searchTextField.getText().toLowerCase())) {
+                clientManager.getClientsList().add(client);
+            }
+        }
+    }
+
 }

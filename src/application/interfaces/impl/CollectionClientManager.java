@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class CollectionClientManager implements ClientManager {
 
     private ObservableList<Client> clientsList;
+    private ObservableList<Client> backupClientsList;
 
     public CollectionClientManager(ObservableList<Client> clientsList) {
         this.clientsList = clientsList;
@@ -22,6 +23,12 @@ public class CollectionClientManager implements ClientManager {
     @Override
     public void fillData() {
         fillTestData();
+        initBackupClientList();
+    }
+
+    private void initBackupClientList() {
+        backupClientsList = FXCollections.observableArrayList();
+        backupClientsList.addAll(clientsList);
     }
 
     private void fillTestData() {
@@ -50,5 +57,10 @@ public class CollectionClientManager implements ClientManager {
     @Override
     public ObservableList<Client> getClientsList() {
         return clientsList;
+    }
+
+    @Override
+    public ObservableList<Client> getBackupClientsList() {
+        return backupClientsList;
     }
 }

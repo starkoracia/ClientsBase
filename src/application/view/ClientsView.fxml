@@ -9,40 +9,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<AnchorPane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ClientsViewController">
+<AnchorPane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ClientsViewController">
     <children>
-        <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="30.0" minHeight="40.0" prefHeight="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="30.0" minHeight="40.0" prefHeight="30.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Button fx:id="newClientButton" layoutX="14.0" layoutY="5.0" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#newClientButtonOnAction" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
+                <Button fx:id="newClientButton" layoutX="14.0" layoutY="5.0" maxHeight="30.0" maxWidth="100.0"
+                        minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#newClientButtonOnAction"
+                        AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
                     <cursor>
-                        <Cursor fx:constant="HAND" />
+                        <Cursor fx:constant="HAND"/>
                     </cursor>
-               <graphic>
-                  <FontAwesomeIconView glyphName="USER_PLUS" size="26" />
-               </graphic>
+                    <graphic>
+                        <FontAwesomeIconView glyphName="USER_PLUS" size="26"/>
+                    </graphic>
                 </Button>
-                <CustomTextField fx:id="searchTextField" layoutX="230.0" layoutY="5.0" maxHeight="30.0" minWidth="280.0" onKeyPressed="#onPressedKeySearchField" prefHeight="30.0" prefWidth="300.0" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="5.0">
-               <padding>
-                  <Insets left="30.0" />
-               </padding></CustomTextField>
-                <FontAwesomeIconView fx:id="searchIcon" glyphName="SEARCH" layoutX="235.0" layoutY="27.0" onMouseClicked="#doSearch" size="22" wrappingWidth="24.571428298950195" AnchorPane.leftAnchor="235.0" AnchorPane.topAnchor="8.14285659790039" />
+                <CustomTextField fx:id="searchTextField" layoutX="230.0" layoutY="5.0" maxHeight="30.0" minWidth="280.0"
+                                 onKeyPressed="#onPressedKeySearchField"
+                                 prefHeight="30.0" prefWidth="300.0" AnchorPane.leftAnchor="230.0"
+                                 AnchorPane.topAnchor="5.0">
+                    <padding>
+                        <Insets left="30.0"/>
+                    </padding>
+                </CustomTextField>
+                <FontAwesomeIconView fx:id="searchIcon" glyphName="SEARCH" layoutX="235.0" layoutY="27.0"
+                                     onMouseClicked="#mouseClickedSearch" size="22" wrappingWidth="24.571428298950195"
+                                     AnchorPane.leftAnchor="235.0" AnchorPane.topAnchor="8.14285659790039">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </FontAwesomeIconView>
             </children>
             <padding>
-                <Insets right="20.0" />
+                <Insets right="20.0"/>
             </padding>
         </AnchorPane>
-        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="580.0"
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="40.0">
             <children>
-                <TableView fx:id="clientsTable" onKeyPressed="#pressedEnter" onMouseClicked="#onMouseClickedTable" prefHeight="448.0" prefWidth="245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <TableView fx:id="clientsTable" onKeyPressed="#pressedEnter" onMouseClicked="#onMouseClickedTable"
+                           prefHeight="448.0" prefWidth="245.0" AnchorPane.bottomAnchor="0.0"
+                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                        <TableColumn fx:id="nameTableColumn" prefWidth="123.0" text="%client.view_name/company" />
-                        <TableColumn fx:id="mobileNumberTableColumn" prefWidth="75.0" text="%client.view_phone" />
-                        <TableColumn fx:id="emailTableColumn" prefWidth="93.0" text="%client.view_email" />
-                        <TableColumn fx:id="recommendationTableColumn" prefWidth="75.0" text="%client.view_how.did.you.know" />
-                        <TableColumn fx:id="annotationTableColumn" prefWidth="75.0" text="%client.view_annotation" />
+                        <TableColumn fx:id="nameTableColumn" prefWidth="123.0" text="%client.view_name/company"/>
+                        <TableColumn fx:id="mobileNumberTableColumn" prefWidth="75.0" text="%client.view_phone"/>
+                        <TableColumn fx:id="emailTableColumn" prefWidth="93.0" text="%client.view_email"/>
+                        <TableColumn fx:id="recommendationTableColumn" prefWidth="75.0"
+                                     text="%client.view_how.did.you.know"/>
+                        <TableColumn fx:id="annotationTableColumn" prefWidth="75.0" text="%client.view_annotation"/>
                     </columns>
                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                     </columnResizePolicy>
                 </TableView>
             </children>
