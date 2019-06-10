@@ -1,7 +1,7 @@
 package application.controllers;
 
 import application.interfaces.ClientManager;
-import application.model.Client;
+import application.sql.entitys.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

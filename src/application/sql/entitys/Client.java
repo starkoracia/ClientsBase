@@ -1,4 +1,4 @@
-package application.model;
+package application.sql.entitys;
 
 import javafx.beans.property.SimpleStringProperty;
 

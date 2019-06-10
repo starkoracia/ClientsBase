@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 import application.interfaces.ClientManager;
 import application.interfaces.impl.CollectionClientManager;
-import application.model.Client;
+import application.sql.entitys.Client;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
@@ -20,7 +20,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -76,7 +75,6 @@ public class ClientsViewController implements Initializable {
         initClientInfoViewLoader();
         setSearchField();
         setTableItems();
-
     }
 
     private void setTableItems() {

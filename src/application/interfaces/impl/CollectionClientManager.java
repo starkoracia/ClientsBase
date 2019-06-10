@@ -1,7 +1,7 @@
 package application.interfaces.impl;
 
 import application.interfaces.ClientManager;
-import application.model.Client;
+import application.sql.entitys.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

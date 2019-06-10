@@ -3,10 +3,11 @@ package application;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import application.controllers.AuthenticateController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NonNls;
 
@@ -14,12 +15,12 @@ public class Main extends Application {
 
     private Stage primaryStage;
 
-    private BorderPane rootView;
+    private AnchorPane rootView;
 
 
     private final String appName;
     @NonNls
-    private final String rootViewLocation = "view/RootView.fxml";
+    private final String authenticateLocation = "view/Authenticate.fxml";
     private ResourceBundle resources;
 
     public Main() {
@@ -30,16 +31,19 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         setPrimaryStage(primaryStage,appName);
-        showRootView();
+        showAuthenticateView();
     }
 
-    private void showRootView() {
+    private void showAuthenticateView() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(rootViewLocation));
-            loader.setResources(resources);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(authenticateLocation));
             rootView = loader.load();
 
+            AuthenticateController controller = loader.getController();
+            controller.setAuthenticateStage(primaryStage);
+
             primaryStage.setScene(new Scene(rootView));
+            primaryStage.setResizable(false);
             primaryStage.show();
 
         } catch (IOException e) {

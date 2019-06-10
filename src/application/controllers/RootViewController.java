@@ -47,6 +47,14 @@ public class RootViewController implements Initializable {
     @FXML
     private Tab paymentsTab;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.resources = resources;
+        loadClientsTabContent();
+        loadStockTabContent();
+        loadStoreTabContent();
+    }
+
     private void loadClientsTabContent() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(clientsViewLocation));
@@ -84,13 +92,5 @@ public class RootViewController implements Initializable {
     }
 
     private void loadPaymentsTabContent() {
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        this.resources = resources;
-        loadClientsTabContent();
-        loadStockTabContent();
-        loadStoreTabContent();
     }
 }

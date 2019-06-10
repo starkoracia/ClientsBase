@@ -1,6 +1,6 @@
 package application.interfaces;
 
-import application.model.Client;
+import application.sql.entitys.Client;
 import javafx.collections.ObservableList;
 
 public interface ClientManager {
